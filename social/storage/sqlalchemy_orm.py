@@ -48,7 +48,7 @@ class SQLAlchemyMixin(object):
     @classmethod
     def _flush(cls):
         try:
-            cls._session().flush()
+            cls._session().commit()
         except AssertionError:
             if transaction:
                 with transaction.manager as manager:
